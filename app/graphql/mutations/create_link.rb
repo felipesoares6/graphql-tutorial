@@ -2,13 +2,18 @@ class Mutations::CreateLink < Mutations::BaseMutation
   argument :url, String, required: true
   argument :description, String, required: true
 
-  type Types::LinkType
+  field :link, Types::LinkType, null: true
 
   def resolve(description: nil, url: nil)
-    Link.create!(
+    link = Link.create(
       url: url,
       description: description
     )
+
+    {
+      link: link,
+      errors: link.errors.full_messages
+    }
   end
 end
 
