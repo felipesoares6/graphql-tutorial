@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Mutations::UpdateLinkTest < ActiveSupport::TestCase
-  test 'update a new link' do
+  test 'update a link' do
     mutation_string = <<-GRAPHQL
       mutation ($id: ID! $url: String, $description: String) {
         updateLink (
